@@ -9,8 +9,23 @@ public class Program {
                 "Петрова 654321"
         };
 
+        /*
+         * Сотрировку не стал переписывать, так как дефолтная соответствует заданию
+         */
         PhoneBook phoneBook = new PhoneBook(data);
 
-        System.out.print(phoneBook.getPhoneBook());
+        System.out.println(phoneBook.getPhoneBook());
+
+        phoneBook.add("Васильев", 123);
+        System.out.println(phoneBook.getPhoneBook());
+
+        phoneBook.add("Васильев", 321456);
+        System.out.println(phoneBook.getPhoneBook());
+
+        phoneBook.removePerson("Васильев");
+        System.out.println(phoneBook.getPhoneBook());
+
+        phoneBook.removePhoneOfPerson("Иванов", 123456);
+        System.out.println(phoneBook.getPhoneBook());
     }
 }

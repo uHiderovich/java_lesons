@@ -19,13 +19,21 @@ public class PhoneBook {
     }
 
     public void add(String name, Integer phoneNum) {
-        if (phoneBook.containsKey(name)) {
-            phoneBook.get(name).add(phoneNum);
-        } else {
-            ArrayList<Integer> list = new ArrayList<>();
-            list.add(phoneNum);
-            phoneBook.put(name, list);
-        }
+        ArrayList<Integer> phones = phoneBook.getOrDefault(name, new ArrayList<>());
+
+        if (!phones.contains(phoneNum))
+            phones.add(phoneNum);
+        if (!phoneBook.containsKey(name))
+            phoneBook.put(name, phones);
+    }
+
+    public void removePerson(String name) {
+        phoneBook.remove(name);
+    }
+
+    public void removePhoneOfPerson(String name, Integer phone) {
+        ArrayList<Integer> phones = phoneBook.getOrDefault(name, new ArrayList<>());
+        phones.remove(phone);
     }
 
     public ArrayList<Integer> find(String name) {
